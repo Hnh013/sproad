@@ -1,0 +1,114 @@
+{% extends 'templating.html' %}
+{% load static %}
+	{% block metatag %}
+	<meta charset="utf-8" />
+    <title>Sproad | Electronics Gadgets Buying/Selling Website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />		
+	{% endblock %}
+    {% block content %}
+
+    <br><br><br><BR>
+    <section>
+<div class ="container">
+    <form method="POST" action="{% url 'createproduct' %}" enctype="multipart/form-data">{% csrf_token %}
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" placeholder="Product Name" name="name">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="label">Label</label>
+      <input type="text" class="form-control" id="label" placeholder="Label Name" name="label">
+    </div>
+  </div>
+  <div class="form-row">
+  <div class="form-group col-md-4">
+    <label for="price">Price</label>
+    <input type="number" step="0.10" class="form-control" name="price" id="price" placeholder="Actual Price">
+  </div>
+  <div class="form-group col-md-4">
+    <label for="discount_price">Discount Price</label>
+    <input type="number" step="0.10" class="form-control" id="discount_price" name="discount_price" placeholder="Discount Price">
+  </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-8">
+      <label for="description">Description</label>
+      <input type="text" class="form-control" id="description" name="description">
+    </div>
+
+    <div class="form-group col-md-2">
+      <label for="slug">Slug</label>
+      <input type="text" class="form-control" id="slug" name="slug">
+    </div>
+  </div>
+
+
+  <div class="row">
+  	<div class="form-group col-md-4">
+      <label for="supplier">Supplier</label>
+      <select id="supplier" class="form-control" name="supplier">
+        <option selected>Supplier1</option>
+        <option>...</option>
+      </select>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="category">Category</label>
+      <select id="category" class="form-control" name="category">
+        <option selected>Books</option>
+        <option selected>Earphones</option>
+        <option selected>Watches</option>
+        <option selected>...</option>
+        <option>...</option>
+      </select>
+    </div>
+    <div class="form-group col-md-4">
+  	 <label for="stock">Stock</label>
+  <input type="number" id="stock" class="form-control" name="stock">
+</div>
+
+    
+  </div>
+
+
+
+  <div class="form-row">
+  	<div class="form-group col-md-4">
+  	 <label for="image">Select image:</label>
+  <input type="file" id="image" class="form-control" name="image">
+  </div>
+
+  <div class="form-group col-md-4">
+  	 <label for="reorder_level">Reorder Level</label>
+  <input type="number" id="reorder_level" class="form-control" name="reorder_level">
+  </div>
+
+  <div class="form-group col-md-4">
+  	 <label for="orders">Orders</label>
+  <input type="number" id="orders" class="form-control" name="orders">
+</div>
+
+
+</div>
+
+  <button type="submit" class="btn btn-primary">Sign in</button>
+</form>
+
+</div></section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    {% endblock %}

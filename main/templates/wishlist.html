@@ -1,0 +1,72 @@
+{% extends 'templating.html' %}
+{% load static %}
+	{% block metatag %}
+	<meta charset="utf-8" />
+    <title>Sproad | Electronics Gadgets Buying/Selling Website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />		
+	{% endblock %}
+    {% block content %}
+    <div class="breadcrumb-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="breadcrumb-content">
+                        <ul class="nav">
+                            <li><a href="index.html">Home</a></li>
+                            <li>Wishlist</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="cart-main-area mtb-60px">
+        <div class="container">
+            <h3 class="cart-page-title">Your cart items</h3>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                    <form action="#">
+                        <div class="table-content table-responsive cart-table-content">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Image</th>
+                                        <th>Product Name</th>
+                                        <th>Until Price</th>
+                                        <th>Qty</th>
+                                        <th>Subtotal</th>
+                                        <th>Add To Cart</th>
+                                    </tr>
+                                </thead>
+                                <tbody>{% if user is not none %}
+                                    {% for w in wi %}
+                                    <tr>
+                                        <td class="product-thumbnail">
+                                            <a href="#"><img class="img-responsive" src="{{w.product.image.url}}" alt=""></a>
+                                        </td>
+                                        <td class="product-name"><a href="{% url 'singleproduct' w.product.id %}">{{w.product.name}}</a></td>
+                                        <td class="product-price-cart"><span class="amount">{{w.product.price}}</span></td>
+                                        <td class="product-quantity">
+                                            <div class="cart-plus-minus"><div class="dec qtybutton">-</div>
+                                                <input class="cart-plus-minus-box" type="text" name="qtybutton" value="{{w.quantity}}">
+                                            <div class="inc qtybutton">+</div></div>
+                                        </td>
+                                        <td class="product-subtotal">{{ w.quantity}}*{{w.product.price}}</td>
+                                        <td class="product-wishlist-cart">
+                                            <a href="{% url 'addtocart' w.product.id %}">add to cart</a>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                    {% endif %}
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}

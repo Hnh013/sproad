@@ -1,0 +1,52 @@
+{% extends 'templating.html' %}
+{% load static %}
+	{% block metatag %}
+	<meta charset="utf-8" />
+    <title>Sproad | Electronics Gadgets Buying/Selling Website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />		
+	{% endblock %}
+    {% block content %}
+
+
+
+   
+<br><Br><br><BR>
+
+<section>
+<div class ="container">
+    <form method="POST" action="{% url 'createup' %}" enctype="multipart/form-data">{% csrf_token %}
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="profile_photo">Picture</label>
+       <input type="file" id="profile_photo" class="form-control" name="profile_photo">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="phone_number">Phone Number</label>
+      <input type="text" class="form-control" id="phone_number" placeholder="Number" name="phone_number">
+    </div>
+  </div>
+  <div class="form-row">
+  <div class="form-group col-md-6">
+    <label for="stripe_customer_id">Price</label>
+    <input type="text" class="form-control" name="stripe_customer_id" id="stripe_customer_id" placeholder="Customer Id for Stripe">
+  </div>
+  <div class="form-group col-md-6">
+    <label for="one_click_purchasing">One Click Purchase</label>
+    <input type="number" class="form-control" id="one_click_purchasing" name="one_click_purchasing" value="0">
+  </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Create Userprofile</button>
+</form></div></section>
+
+
+
+
+
+
+
+
+
+
+    {% endblock %}

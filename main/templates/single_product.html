@@ -1,0 +1,80 @@
+{% extends 'templating.html' %}
+{% load static %}
+	{% block metatag %}
+	<meta charset="utf-8" />
+    <title>Sproad | Electronics Gadgets Buying/Selling Website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />		
+	{% endblock %}
+    {% block content %}
+
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="#" data-dismiss="modal" class="class pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+                <h3 class="modal-title">{{product.name}}</h3>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6 product_img">
+                        <img src="{{product.image.url}}" class="img-responsive">
+                    </div>
+                    <div class="col-md-6 product_content">
+                        <h4>{{product.label}} <span></span></h4>
+                        <div class="rating">
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            (10 reviews)
+                        </div>
+                        <p>{{product.description}}</p>
+                        <h3 class="cost"><span class="glyphicon glyphicon-usd"></span>{{product.price}}<small class="pre-cost"><span class="glyphicon glyphicon-usd"></span> Discount  {{product.discount_price}}</small></h3>
+                        <div class="row">
+                            
+                            <div class="col-md-4 col-sm-12">
+                                <select class="form-control" name="select">
+                                    <option value="" selected="">QTY</option>
+                                    <option value="">1</option>
+                                    <option value="">2</option>
+                                    <option value="">3</option>
+                                </select>
+                            </div>
+                            
+                            
+                            <div class="col-md-4 col-sm-12">
+                                <h6>Vendor </h6>{{product.vendor}}
+      
+                            </div>
+                            <div class="col-md-4 col-sm-12">
+                                <h6>Stock </h6>{{product.stock}}
+      
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <div class="space-ten"></div>
+                        <div class="btn-ground">
+                            <a href="{% url 'addtocart' product.id %}"><button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-shopping-cart"></span> Add To Cart</button></a>
+                            <a href="{% url 'addtowishlist' product.id %}"><button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-heart"></span> Add To Wishlist</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    {% endblock %}

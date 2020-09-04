@@ -1,0 +1,82 @@
+{% extends 'templating.html' %}
+{% load static %}
+	{% block metatag %}
+	<meta charset="utf-8" />
+    <title>Landrick - Saas & Software Landing Page Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Premium Bootstrap 4 Landing Page Template" />
+    <meta name="keywords" content="Saas, Software, multi-uses, HTML, Clean, Modern" />		
+	{% endblock %}
+    {% block content %}	
+    <style>.fb {
+  background-color: #3B5998;
+  color: white;
+}
+.google {
+  background-color: #dd4b39;
+  color: white;
+}</style>   
+    <div class="breadcrumb-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="breadcrumb-content">
+                        <ul class="nav">
+                            <li><a href="index.html">Home</a></li>
+                            <li>Login / Register</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="login-register-area mtb-60px">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 col-md-12 ml-auto mr-auto">
+                    <div class="login-register-wrapper">
+                        <div class="login-register-tab-list nav">
+                            <a class="" data-toggle="tab" href="#lg1">
+                                <h4>login</h4>
+                            </a>
+                            <a href="{% url 'registerUser' %}" class="active">
+                                <h4>register</h4>
+                            </a>
+                        </div>
+                        <div class="tab-content">
+                            <div id="lg1" class="tab-pane">
+                                <div class="login-form-container">
+                                    <div class="login-register-form">
+                                        <form action="{% url 'loginUser' %}" method="POST">
+                                            {% csrf_token %}
+                                            <input type="text" name="username" placeholder="Username">
+                                            <input type="password" name="password" placeholder="Password">
+                                            <div class="button-box">
+                                                <div class="login-toggle-btn">
+                                                    <input type="checkbox">
+                                                    <a class="flote-none" href="javascript:void(0)">Remember me</a>
+                                                    <a href="#">Forgot Password?</a>
+                                                </div>
+                                                <button type="submit"><span>Login</span></button>
+                                            </div>
+                                        </form>
+
+                                        <hr>
+                <a href="{% url 'social:begin' 'facebook' %}" class="fb btn">
+          <i class="fa fa-facebook fa-fw"></i> Login with Facebook
+         </a>
+       
+        <a href="{% url 'social:begin' 'google-oauth2' %}" class="google btn"><i class="fa fa-google fa-fw">
+          </i> Login with Gmail
+        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
